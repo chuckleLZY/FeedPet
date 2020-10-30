@@ -31,7 +31,7 @@
             router
           >
             <el-menu-item index="/Home">首页</el-menu-item>
-            <el-menu-item index="/Recruitment">招聘会</el-menu-item>
+            <el-menu-item index="/Recruitment">宠物喂养</el-menu-item>
             <el-menu-item index="/TeacherTable" v-if="this.$store.state.role==2">工作台</el-menu-item>
             <!-- <el-menu-item index="/AdminTable" v-if="this.$store.state.role==0">管理员工作台</el-menu-item> -->
             <el-menu-item index="/PublishSystemMessage" v-if="this.$store.state.role==0">工作台</el-menu-item>

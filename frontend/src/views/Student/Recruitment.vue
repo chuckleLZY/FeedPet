@@ -5,7 +5,7 @@
       class="recruitment_breadcrumb"
     >
       <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>招聘会</el-breadcrumb-item>
+      <el-breadcrumb-item>宠物喂养</el-breadcrumb-item>
     </el-breadcrumb>
 
     <el-card

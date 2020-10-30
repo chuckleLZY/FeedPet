@@ -10,7 +10,7 @@
       <el-header>
         <el-row :gutter="40" type="flex" class="row-bg" justify="center">
           <el-col :span="10">
-            <div class="grid-content bg-purple-light">最新工作招聘信息</div>
+            <div class="grid-content bg-purple-light">最新宠物喂养师信息</div>
           </el-col>
           <el-col :span="10">
             <div class="grid-content bg-purple-light">系统公告</div>
