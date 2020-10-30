@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "7pWUvzh2mOW4YYoiCL4oshU+yQ6fxvCgydWRU1/+8jsQxDP7BJhMw2Fk8y3UU+2n7gLaFtm/cobYx9X5QuVTqA==",
+  "success": true,
+  "projectFilePath": "/Users/admin/Desktop/course/大二下/SYAdata/第16组_1851489_吕梓源_SYA学工管理系统/program/backend/SyaApi.csproj",
+  "expectedPackageFiles": [
+    "/Users/admin/.nuget/packages/automapper/10.0.0/automapper.10.0.0.nupkg.sha512",
+    "/Users/admin/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/8.0.1/automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512",
+    "/Users/admin/.nuget/packages/bcrypt.net-next/4.0.0/bcrypt.net-next.4.0.0.nupkg.sha512",
+    "/Users/admin/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
+    "/Users/admin/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/3.0.0/microsoft.extensions.dependencyinjection.abstractions.3.0.0.nupkg.sha512",
+    "/Users/admin/.nuget/packages/microsoft.extensions.options/3.0.0/microsoft.extensions.options.3.0.0.nupkg.sha512",
+    "/Users/admin/.nuget/packages/microsoft.extensions.primitives/3.0.0/microsoft.extensions.primitives.3.0.0.nupkg.sha512",
+    "/Users/admin/.nuget/packages/mysqlconnector/1.0.0/mysqlconnector.1.0.0.nupkg.sha512",
+    "/Users/admin/.nuget/packages/system.reflection.emit/4.7.0/system.reflection.emit.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

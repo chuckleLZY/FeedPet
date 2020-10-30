@@ -1,0 +1,11 @@
+{
+  "API_URL": "https://localhost:5001",
+  "OSS_CONF": {
+    "region": "oss-cn-beijing",
+    "accessKeyId": "LTAI4Fy6Xghwp7PQJPcSPbmh",
+    "accessKeySecret": "80wd9nL6FH9vpmQEMPJu1dFEOW9bu5",
+    "bucket": "fccimg"
+  },
+  "OSS_URL": "https://fccimg.oss-cn-beijing.aliyuncs.com/",
+  "DEFAULT_AVATAR": "https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png"
+}
