@@ -4,7 +4,7 @@
       separator-class="el-icon-arrow-right"
       class="recruitment_breadcrumb"
     >
-      <el-breadcrumb-item :to="{ path: '/home' }">学生</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/home' }">宠物主人</el-breadcrumb-item>
       <el-breadcrumb-item>消息</el-breadcrumb-item>
       <el-breadcrumb-item>系统公告</el-breadcrumb-item>
     </el-breadcrumb>

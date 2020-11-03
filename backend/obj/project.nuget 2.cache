@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ti0KvTE+bgcnamyLQ6isD3IrPMh0kTIBE/MxgrC3rEafLUYiS5RRV4LZOAq9qQoKpFOqvWUin2fmo9e0KgDzDg==",
+  "dgSpecHash": "7pWUvzh2mOW4YYoiCL4oshU+yQ6fxvCgydWRU1/+8jsQxDP7BJhMw2Fk8y3UU+2n7gLaFtm/cobYx9X5QuVTqA==",
   "success": true,
-  "projectFilePath": "/Users/admin/Desktop/CDD/backend/SyaApi.csproj",
+  "projectFilePath": "/Users/admin/Desktop/course/大二下/SYAdata/第16组_1851489_吕梓源_SYA学工管理系统/program/backend/SyaApi.csproj",
   "expectedPackageFiles": [
     "/Users/admin/.nuget/packages/automapper/10.0.0/automapper.10.0.0.nupkg.sha512",
     "/Users/admin/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/8.0.1/automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512",

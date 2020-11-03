@@ -118,10 +118,10 @@ export default {
   data() {
     return {
       imagebox: [
-        { id: 0, idView: require("../assets/imagebox/1.jpeg") },
-        { id: 1, idView: require("../assets/imagebox/2.jpeg") },
-        { id: 2, idView: require("../assets/imagebox/3.png") },
-        { id: 3, idView: require("../assets/imagebox/4.jpg") },
+        { id: 0, idView: require("../assets/imagebox/login1.png") },
+        { id: 1, idView: require("../assets/imagebox/login2.png") },
+        { id: 2, idView: require("../assets/imagebox/login3.png") },
+        { id: 3, idView: require("../assets/imagebox/login4.png") },
         //imagebox是assets下一个放图片的文件夹
       ],
       screenWidth: 0,

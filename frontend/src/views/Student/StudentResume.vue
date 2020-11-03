@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/home' }">学生</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/home' }">宠物主人</el-breadcrumb-item>
       <el-breadcrumb-item>我的</el-breadcrumb-item>
       <el-breadcrumb-item>个人简历</el-breadcrumb-item>
     </el-breadcrumb>

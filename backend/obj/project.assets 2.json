@@ -368,11 +368,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/admin/Desktop/CDD/backend/SyaApi.csproj",
+      "projectUniqueName": "/Users/admin/Desktop/course/大二下/SYAdata/第16组_1851489_吕梓源_SYA学工管理系统/program/backend/SyaApi.csproj",
       "projectName": "SyaApi",
-      "projectPath": "/Users/admin/Desktop/CDD/backend/SyaApi.csproj",
+      "projectPath": "/Users/admin/Desktop/course/大二下/SYAdata/第16组_1851489_吕梓源_SYA学工管理系统/program/backend/SyaApi.csproj",
       "packagesPath": "/Users/admin/.nuget/packages/",
-      "outputPath": "/Users/admin/Desktop/CDD/backend/obj/",
+      "outputPath": "/Users/admin/Desktop/course/大二下/SYAdata/第16组_1851489_吕梓源_SYA学工管理系统/program/backend/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

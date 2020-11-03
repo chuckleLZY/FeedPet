@@ -51,7 +51,7 @@
               </div>
               <div style="padding: 14px;">
                 <p>
-                  <el-tag type="danger">工作名称</el-tag>
+                  <el-tag type="danger">喂养师</el-tag>
                   : {{ work.work_name }}
                 </p>
                 <p>
@@ -117,7 +117,7 @@
             <br />
             <el-form :model="workInfo" label-width="75px" class="demo-ruleForm">
               <el-form-item
-                label="工作名称:"
+                label="喂养师名字:"
                 prop="work_name"
                 class="demo-ruleFormItem"
               >
@@ -131,14 +131,14 @@
                 <el-input v-model="workInfo.address" readonly></el-input>
               </el-form-item>
               <el-form-item
-                label="薪资:"
+                label="期望薪资:"
                 prop="salary"
                 class="demo-ruleFormItem"
               >
                 <el-input v-model="workInfo.salary" readonly></el-input>
               </el-form-item>
               <el-form-item
-                label="工作日期:"
+                label="期望工作日期:"
                 prop="start_day"
                 class="demo-ruleFormItem"
               >
@@ -191,18 +191,7 @@
                   readonly
                 ></el-input>
               </el-form-item>
-              <el-form-item
-                label="工作描述:"
-                prop="work_description"
-                class="demo-ruleFormItem"
-              >
-                <el-input
-                  type="textarea"
-                  :rows="4"
-                  v-model="workInfo.work_description"
-                  readonly
-                ></el-input>
-              </el-form-item>
+             
             </el-form>
           </div>
           <div class="demo-drawer__footer">
@@ -213,7 +202,7 @@
             style="margin-top: 16px;"
             v-if="this.$store.state.role == 1"
             plain
-            >提交简历</el-button
+            >提交申请</el-button
           >
           <el-button
             type="primary"

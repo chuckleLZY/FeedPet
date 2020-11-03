@@ -14,18 +14,18 @@
           <i class="el-icon-s-custom"></i>
           <span slot="title">我的资料</span>
         </el-menu-item>
-        <el-menu-item index="/StudentResume">
+       <!-- <el-menu-item index="/StudentResume">
           <i class="el-icon-postcard"></i>
           <span slot="title">个人简历</span>
-        </el-menu-item>
+        </el-menu-item>-->
         <el-menu-item index="/StudentWorkManagement">
           <i class="el-icon-menu"></i>
-          <span slot="title">工作管理</span>
+          <span slot="title">申请管理</span>
         </el-menu-item>
-        <el-menu-item index="/StudentLeaveManagement">
+        <!--<el-menu-item index="/StudentLeaveManagement">
           <i class="el-icon-folder-remove"></i>
           <span slot="title">请假管理</span>
-        </el-menu-item>
+        </el-menu-item>-->
       </el-menu>
     </el-aside>
     <el-main>

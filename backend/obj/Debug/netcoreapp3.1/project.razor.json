@@ -1,5 +1,5 @@
 {
-  "FilePath": "/Users/admin/Desktop/course/大二下/SYAdata/第16组_1851489_吕梓源_SYA学工管理系统/program/backend/SyaApi.csproj",
+  "FilePath": "/Users/admin/Desktop/CDD/backend/SyaApi.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -14387,7 +14387,7 @@
         }
       }
     ],
-    "CSharpLanguageVersion": 800
+    "CSharpLanguageVersion": 900
   },
   "RootNamespace": "SyaApi",
   "Documents": [],

@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/home' }">学生</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/home' }">宠物主人</el-breadcrumb-item>
       <el-breadcrumb-item>我的</el-breadcrumb-item>
       <el-breadcrumb-item>我的资料</el-breadcrumb-item>
     </el-breadcrumb>
@@ -105,58 +105,7 @@
           </el-form-item>
         </el-form>
       </el-row>
-      <!--信息标题-->
-      <el-row class="section">
-        <p class="subTitle">工作情况</p>
-        <hr class="sectionHr" align="center" />
-        <!--表单-->
-        <el-form label-width="0px" class="infoForm">
-          <el-form-item class="itemRow">
-            <div class="itemNameContainer">
-              <p class="itemName"><i class="el-icon-date"></i> 工作总时长 ：</p>
-            </div>
-            <el-input
-              class="infoItem"
-              readonly
-              v-model="UserInfo.work_time"
-            ></el-input>
-          </el-form-item>
-          <el-form-item class="itemRow">
-            <div class="itemNameContainer">
-              <p class="itemName">
-                <i class="el-icon-document"></i> 申请总次数 :
-              </p>
-            </div>
-            <el-input
-              class="infoItem"
-              readonly
-              v-model="UserInfo.nof_apply"
-            ></el-input>
-          </el-form-item>
-          <el-form-item class="itemRow">
-            <div class="itemNameContainer">
-              <p class="itemName">
-                <i class="el-icon-document-delete"></i> 请假总次数 :
-              </p>
-            </div>
-            <el-input
-              class="infoItem"
-              readonly
-              v-model="UserInfo.nof_absent"
-            ></el-input>
-          </el-form-item>
-          <el-form-item class="itemRow">
-            <div class="itemNameContainer">
-              <p class="itemName"><i class="el-icon-help"></i> 累积总收入 :</p>
-            </div>
-            <el-input
-              class="infoItem"
-              readonly
-              v-model="UserInfo.income"
-            ></el-input>
-          </el-form-item>
-        </el-form>
-      </el-row>
+      
       <div style="text-align:center">
         <p class="syaSup">SYA——Show Your Ability</p>
       </div>

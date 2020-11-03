@@ -88,7 +88,7 @@
       <el-table :data="Favorite_work" :model="Favorite_work_table">
         <el-table-column
           property="work_name"
-          label="工作名字"
+          label="喂养师名字"
           v-model="Favorite_work_table.work_name"
           width="120"
         ></el-table-column>
@@ -100,13 +100,13 @@
         ></el-table-column>
         <el-table-column
           property="salary"
-          label="工作薪水"
+          label="期望工作薪水"
           v-model="Favorite_work_table.salary"
           width="120"
         ></el-table-column>
         <el-table-column
           property="work_time"
-          label="工作时间"
+          label="期望工作时间"
           v-model="Favorite_work_table.work_time"
           width="120"
         ></el-table-column>

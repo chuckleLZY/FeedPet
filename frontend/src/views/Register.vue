@@ -139,11 +139,11 @@ export default {
       options: [
         {
           value: 1,
-          label: "学生",
+          label: "宠物主人",
         },
         {
           value: 2,
-          label: "老师",
+          label: "喂养师",
         },
       ],
       value: "",
