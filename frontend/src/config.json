@@ -2,8 +2,8 @@
   "API_URL": "https://localhost:5001",
   "OSS_CONF": {
     "region": "oss-cn-beijing",
-    "accessKeyId": "LTAI4G88Y7reHmr3KLEckoLm",
-    "accessKeySecret": "Pbpw0usNCCsTSEH9kVSa806hxtiTlq",
+    "accessKeyId": "*",
+    "accessKeySecret": "*",
     "bucket": "scottfeedpet"
   },
   "OSS_URL": "https://scottfeedpet.oss-cn-beijing.aliyuncs.com/",
