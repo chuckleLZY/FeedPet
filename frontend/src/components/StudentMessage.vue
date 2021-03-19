@@ -16,7 +16,7 @@
         </el-menu-item>
         <el-menu-item index="/StudentWorkMessage">
           <i class="el-icon-question"></i>
-          <span slot="title">工作通知</span>
+          <span slot="title">服务进程</span>
         </el-menu-item>
       </el-menu>
     </el-aside>

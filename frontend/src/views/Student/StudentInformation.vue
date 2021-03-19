@@ -44,7 +44,7 @@
           v-if="UserInfo.user_role == 1"
           style="font-weight:bold; font-size:20px;"
         >
-          <i class="el-icon-s-custom"></i> 学生
+          <i class="el-icon-s-custom"></i> 宠物主人
         </p>
       </el-row>
       <el-tag
@@ -107,7 +107,7 @@
       </el-row>
       
       <div style="text-align:center">
-        <p class="syaSup">SYA——Show Your Ability</p>
+        <p class="syaSup"></p>
       </div>
     </el-card>
 

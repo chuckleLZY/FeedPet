@@ -1,7 +1,7 @@
 <template>
   <div class="cha_img">
     <!--动态将图片轮播图的容器高度设置成与图片一致-->
-    <el-carousel :interval="4000" type="card" height="400px">
+    <el-carousel :interval="4000" type="card" height="220px">
       <el-carousel-item v-for="item in imagebox" :key="item.id">
         <img :src="item.idView" class="image" />
       </el-carousel-item>
@@ -25,7 +25,7 @@
               <div>
                 <span v-if="workList[0]">
                   <i class="el-icon-wallet"></i>
-                  &emsp;{{ workList[0].address }}发布新工作:{{
+                  &emsp;{{ workList[0].address }}发布新服务:{{
                     workList[0].work_name
                   }}
                 </span>
@@ -35,21 +35,21 @@
                 <el-divider></el-divider>
                 <span v-if="workList[1]">
                   <i class="el-icon-wallet"></i>
-                  &emsp;{{ workList[1].address }}发布新工作:{{
+                  &emsp;{{ workList[1].address }}发布新服务:{{
                     workList[1].work_name
                   }}
                 </span>
                 <el-divider></el-divider>
                 <span v-if="workList[2]">
                   <i class="el-icon-wallet"></i>
-                  &emsp;{{ workList[2].address }}发布新工作:{{
+                  &emsp;{{ workList[2].address }}发布新服务:{{
                     workList[2].work_name
                   }}
                 </span>
                 <el-divider></el-divider>
                 <span v-if="workList[3]">
                   <i class="el-icon-wallet"></i>
-                  &emsp;{{ workList[3].address }}发布新工作:{{
+                  &emsp;{{ workList[3].address }}发布新服务:{{
                     workList[3].work_name
                   }}
                 </span>
@@ -104,7 +104,7 @@
         </el-row>
         <el-divider></el-divider>
         <div style="text-align:center">
-          <p class="syaSup">SYA——Show Your Ability</p>
+          <p class="syaSup">FeedPet——Feed Our Pets</p>
         </div>
       </el-main>
     </el-container>
@@ -118,10 +118,10 @@ export default {
   data() {
     return {
       imagebox: [
-        { id: 0, idView: require("../assets/imagebox/login1.png") },
-        { id: 1, idView: require("../assets/imagebox/login2.png") },
-        { id: 2, idView: require("../assets/imagebox/login3.png") },
-        { id: 3, idView: require("../assets/imagebox/login4.png") },
+        { id: 0, idView: require("../assets/imagebox/login1.jpg") },
+        { id: 1, idView: require("../assets/imagebox/login2.jpg") },
+        { id: 2, idView: require("../assets/imagebox/login3.jpg") },
+        { id: 3, idView: require("../assets/imagebox/login4.jpg") },
         //imagebox是assets下一个放图片的文件夹
       ],
       screenWidth: 0,
@@ -133,7 +133,7 @@ export default {
     };
   },
   created() {
-    //调用获取发布的工作的API函数
+    //调用获取发布的服务的API函数
     //  this.getWorkInfo()
     this.getWorkList(), this.getAnnounce();
   },

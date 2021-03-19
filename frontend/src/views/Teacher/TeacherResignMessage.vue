@@ -15,9 +15,9 @@
                 <el-col :span="7">
                     <el-input placeholder="请输入内容" v-model="input3" class="input-with-select">
                         <el-select v-model="select" slot="prepend" placeholder="搜索类型">
-                        <el-option label="工作类型" value="1"></el-option>
-                        <el-option label="工作时间" value="2"></el-option>
-                        <el-option label="工作地点" value="3"></el-option>
+                        <el-option label="服务类型" value="1"></el-option>
+                        <el-option label="服务时间" value="2"></el-option>
+                        <el-option label="服务地点" value="3"></el-option>
                         </el-select>
                         <el-button slot="append" icon="el-icon-search"></el-button>
                     </el-input>
@@ -127,7 +127,7 @@ export default {
       checkDialogVisible: false,
       messageData: {},
       loading: true,
-      //获取工作列表的参数对象
+      //获取服务列表的参数对象
       queryInfo: {
         pagenum: 1,
         pagesize: 5,
@@ -138,7 +138,7 @@ export default {
     };
   },
   created() {
-    //调用获取发布的工作的API函数
+    //调用获取发布的服务的API函数
     this.getWorkMessageList();
   },
   methods: {
@@ -158,7 +158,7 @@ export default {
       this.getWorkMessageList();
       this.loading = false;
     },
-    //获取工作列表的函数
+    //获取服务列表的函数
     //   async getWorkList(){
     //      const {data:res}= await this.$http.get('URL',{params:this.queryInfo})
     //   }
@@ -218,7 +218,7 @@ export default {
 
     async removeMesById(id) {
       const confirmResulte = await this.$confirm(
-        "此操作将永久删除该工作消息, 是否继续?",
+        "此操作将永久删除该服务消息, 是否继续?",
         "提示",
         {
           confirmButtonText: "确定",

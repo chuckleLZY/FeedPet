@@ -1,6 +1,6 @@
 <template>
   <div class="login_container">
-    <el-carousel :interval="4000" type="card" height="200px">
+    <el-carousel :interval="4000" type="card" height="220px">
       <el-carousel-item v-for="item in imagebox" :key="item.id">
         <img :src="item.idView" class="image" />
       </el-carousel-item>
@@ -66,8 +66,8 @@
       <b>满意的话，请给我们项目一点支持</b>
       <br />
       <img src="../assets/imagebox/login_mid2.png" alt class="mid" />
-      <img src="../assets/imagebox/login_left2.png" alt class="left" />
-      <img src="../assets/imagebox/login_right2.png" alt class="right" />
+      <!-- <img src="../assets/imagebox/login_left2.png" alt class="left" /> -->
+      <!-- <img src="../assets/imagebox/login_right2.png" alt class="right" /> -->
     </div>
     <div class="login_box">
       <!-- <div class="avatar_box">
@@ -145,10 +145,10 @@ export default {
         ],
       },
       imagebox: [
-        { id: 0, idView: require("../assets/imagebox/login1.png") },
-        { id: 1, idView: require("../assets/imagebox/login2.png") },
-        { id: 2, idView: require("../assets/imagebox/login3.png") },
-        { id: 3, idView: require("../assets/imagebox/login4.png") },
+        { id: 0, idView: require("../assets/imagebox/login1.jpg") },
+        { id: 1, idView: require("../assets/imagebox/login2.jpg") },
+        { id: 2, idView: require("../assets/imagebox/login3.jpg") },
+        { id: 3, idView: require("../assets/imagebox/login4.jpg") },
         //imagebox是assets下一个放图片的文件夹
       ],
       screenWidth: 0,
@@ -238,7 +238,7 @@ export default {
   .mid {
     height: 200px;
     width: 200px;
-    transform: translate(70%, 10%);
+    transform: translate(0%, 30%);
     img {
       width: 100%;
       height: 100%;
@@ -246,28 +246,7 @@ export default {
       background-color: #eee;
     }
   }
-  .left {
-    height: 140px;
-    width: 140px;
-    transform: translate(-150%, 80%);
-    img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background-color: #eee;
-    }
-  }
-  .right {
-    height: 140px;
-    width: 140px;
-    transform: translate(5%, 80%);
-    img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background-color: #eee;
-    }
-  }
+ 
 }
 .el-carousel__item h3 {
   color: #475669;

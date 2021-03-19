@@ -46,7 +46,7 @@
           v-if="UserInfo.user_role == 2"
           style="font-weight:bold; font-size:20px;"
         >
-          <i class="el-icon-s-custom"></i> 老师
+          <i class="el-icon-s-custom"></i>宠物喂养师
         </p>
       </el-row>
       <el-tag
@@ -109,13 +109,13 @@
       </el-row>
       <!--信息标题-->
       <!-- <el-row class="section">
-        <p class="subTitle">工作情况</p>
+        <p class="subTitle">服务情况</p>
         <hr class="sectionHr" align="center" />
         <el-form label-width="0px" class="infoForm">
           <el-form-item class="itemRow">
             <div class="itemNameContainer">
               <p class="itemName">
-                <i class="el-icon-date"></i> 工作总时长 ：
+                <i class="el-icon-date"></i> 服务总时长 ：
               </p>
             </div>
             <el-input class="infoItem" readonly v-model="UserInfo.work_time"></el-input>
@@ -123,7 +123,7 @@
           <el-form-item class="itemRow">
             <div class="itemNameContainer">
               <p class="itemName">
-                <i class="el-icon-document"></i> 申请总次数 :
+                <i class="el-icon-document"></i> 预约总次数 :
               </p>
             </div>
             <el-input class="infoItem" readonly v-model="UserInfo.nof_apply"></el-input>
@@ -147,7 +147,7 @@
         </el-form>
       </el-row> -->
       <div style="text-align:center">
-        <p class="syaSup">SYA——Show Your Ability</p>
+        <p class="syaSup">FeedPet——Feed Our Pets</p>
       </div>
     </el-card>
 

@@ -14,7 +14,7 @@ namespace SyaApi.DataAccessors
         ///</summery>
         public static async Task<ApplyEntity> Read(int apply_id)
         {
-            var query = "SELECT apply_id,student_id,teacher_id,work_id,resume_id,status FROM apply WHERE apply_id=@id ORDER BY status ASC";
+            var query = "SELECT apply_id,user_id,worker_id,work_id,resume_id,status FROM apply WHERE apply_id=@id ORDER BY status ASC";
 
             using var connection = DatabaseConnector.Connect();
             await connection.OpenAsync();
@@ -28,8 +28,8 @@ namespace SyaApi.DataAccessors
                 return new ApplyEntity()
                 {
                     apply_id=reader.GetInt32("apply_id"),
-                    student_id=reader.GetInt32("student_id"),
-                    teacher_id=reader.GetInt32("teacher_id"),
+                    student_id=reader.GetInt32("user_id"),
+                    teacher_id=reader.GetInt32("worker_id"),
                     work_id=reader.GetInt32("work_id"),
                     resume_id=reader.GetInt32("resume_id"),
                     status=reader.GetInt32("status")
@@ -44,7 +44,7 @@ namespace SyaApi.DataAccessors
         ///</summery>
         public static async Task<int> GetNumOfApp(int stu_id)
         {
-            var query = "SELECT count(apply_id) AS nof_app FROM apply WHERE student_id=@id";
+            var query = "SELECT count(apply_id) AS nof_app FROM apply WHERE user_id=@id";
 
             using var connection = DatabaseConnector.Connect();
             await connection.OpenAsync();
@@ -70,7 +70,7 @@ namespace SyaApi.DataAccessors
             var apps = new ApplyItemEntity();
             apps.total = 0;
             apps.ApplyItem = new List<ApplyEntity>();
-            var query = "SELECT apply_id,student_id,teacher_id,work_id,resume_id,status FROM apply WHERE teacher_id=@id ORDER BY status ASC";
+            var query = "SELECT apply_id,user_id,worker_id,work_id,resume_id,status FROM apply WHERE worker_id=@id ORDER BY status ASC";
 
             using var connection = DatabaseConnector.Connect();
             await connection.OpenAsync();
@@ -85,8 +85,8 @@ namespace SyaApi.DataAccessors
                 var temp = new ApplyEntity()
                 {
                     apply_id=reader.GetInt32("apply_id"),
-                    student_id=reader.GetInt32("student_id"),
-                    teacher_id=reader.GetInt32("teacher_id"),
+                    student_id=reader.GetInt32("user_id"),
+                    teacher_id=reader.GetInt32("worker_id"),
                     work_id=reader.GetInt32("work_id"),
                     resume_id=reader.GetInt32("resume_id"),
                     status=reader.GetInt32("status")
@@ -118,7 +118,7 @@ namespace SyaApi.DataAccessors
 
         public static async Task<int> Create(ApplyEntity apply)
         {
-            var query = "INSERT INTO apply(student_id,teacher_id,work_id,resume_id,status)VALUES(@student_id,@teacher_id,@work_id,@resume_id,@status)";
+            var query = "INSERT INTO apply(user_id,worker_id,work_id,resume_id,status)VALUES(@student_id,@teacher_id,@work_id,@resume_id,@status)";
 
             using var connection = DatabaseConnector.Connect();
             await connection.OpenAsync();
@@ -144,7 +144,7 @@ namespace SyaApi.DataAccessors
         ///</summery>
         public static async Task<int> CheckApply(int stu_id, int work_id)
         {
-            var query = "SELECT status FROM apply WHERE student_id=@stu_id AND work_id=@work_id";
+            var query = "SELECT status FROM apply WHERE user_id=@stu_id AND work_id=@work_id";
 
             using var connection = DatabaseConnector.Connect();
             await connection.OpenAsync();

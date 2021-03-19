@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/home' }">学生</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/home' }">宠物主人</el-breadcrumb-item>
       <el-breadcrumb-item>我的</el-breadcrumb-item>
       <el-breadcrumb-item>请假管理</el-breadcrumb-item>
     </el-breadcrumb>
@@ -25,7 +25,7 @@
           <el-table-column prop="status" label="状态" width="80">
             <template slot-scope="scope">
               <el-tag type="primary" v-if="scope.row.status == 0"
-                >申请中</el-tag
+                >预约中</el-tag
               >
               <el-tag type="success" v-if="scope.row.status == 1"
                 >已通过</el-tag
@@ -43,7 +43,7 @@
                   getWorkInfo(scope.row.work_id);
                   workVisible = true;
                 "
-                >工作详情</el-button
+                >服务详情</el-button
               >
               <el-button
                 type="success"
@@ -56,7 +56,7 @@
                   AbForm.work_id = scope.row.work_id;
                   AbsentVisible = true;
                 "
-                >修改申请</el-button
+                >修改预约</el-button
               >
             </template>
           </el-table-column>
@@ -78,7 +78,7 @@
 
     <!--更新请假的信息-->
     <el-dialog
-      title="修改申请"
+      title="修改预约"
       :visible.sync="AbsentVisible"
       @close="AbFormClose()"
       width="50%"
@@ -126,8 +126,8 @@
       </span>
     </el-dialog>
 
-    <!--工作详情-->
-    <el-dialog title="工作详情 " :visible.sync="workVisible" width="50%" center>
+    <!--服务详情-->
+    <el-dialog title="服务详情 " :visible.sync="workVisible" width="50%" center>
       <el-row style="text-align:center">
         <el-image :src="WorkList.cover" fit="fit">
           <div slot="error" class="image-slot">
@@ -138,11 +138,11 @@
       <el-row>
         <el-col :offset="7">
           <p class="inlineTitle">
-            <i class="el-icon-paperclip"></i> 工作名称 ：
+            <i class="el-icon-paperclip"></i> 服务名称 ：
             <span class="inlineInfo"> {{ WorkList.work_name }} </span>
           </p>
           <p class="inlineTitle">
-            <i class="el-icon-tickets "></i> 工作描述 ：
+            <i class="el-icon-tickets "></i> 服务描述 ：
             <span class="inlineInfo"> {{ WorkList.work_description }} </span>
           </p>
           <p class="inlineTitle">
@@ -154,12 +154,12 @@
             <span class="inlineInfo"> {{ WorkList.collect_num }} </span>
           </p>
           <p class="inlineTitle">
-            <i class="el-icon-date"></i> 工作周期 ：
+            <i class="el-icon-date"></i> 服务周期 ：
             <span class="inlineInfo"> {{ WorkList.start_day }} </span> ~
             <span class="inlineInfo"> {{ WorkList.end_day }} </span>
           </p>
           <p class="inlineTitle">
-            <i class="el-icon-time"></i> 工作时间 ：
+            <i class="el-icon-time"></i> 服务时间 ：
             <span class="inlineInfo" v-if="WorkList.week_day == 1">
               星期一
             </span>
@@ -194,7 +194,7 @@
 
     <!--请假的信息-->
     <el-dialog
-      title="请假申请"
+      title="请假预约"
       :visible.sync="AbsentVisible"
       @close="
         AbFormClose();
@@ -223,7 +223,7 @@
             </el-date-picker>
           </el-col>
         </el-form-item>
-        <el-form-item label="工作时间" required>
+        <el-form-item label="服务时间" required>
           <el-col :span="8">
             <el-form-item prop="leave_start">
               <el-time-select
@@ -322,7 +322,7 @@ export default {
         leave_end: [{ required: true, message: "请选择请假的结束时间" }],
       },
       pickerOptions0: {
-        //设置日期必须在工作时间之间
+        //设置日期必须在服务时间之间
         disabledDate: (time) => {
           return (
             new Date(this.WorkList.start_day).getTime() > time.getTime() ||
@@ -369,9 +369,9 @@ export default {
     updateAbsent() {
       this.$refs.AbFormRef.validate(async (valid) => {
         if (!valid) {
-          //this.$message.error("请按照验证提示正确填写请假申请后再进行");
+          //this.$message.error("请按照验证提示正确填写请假预约后再进行");
           this.$message({
-            message: "请按照验证提示正确填写请假申请后再进行",
+            message: "请按照验证提示正确填写请假预约后再进行",
             type: "error",
             duration: 1000,
           });
@@ -385,9 +385,9 @@ export default {
           this.AbForm,
           { withCredentials: true }
         );
-        //this.$message.success("请假申请更新成功!");
+        //this.$message.success("请假预约更新成功!");
         this.$message({
-          message: "请假申请更新成功",
+          message: "请假预约更新成功",
           type: "success",
           duration: 1000,
         });

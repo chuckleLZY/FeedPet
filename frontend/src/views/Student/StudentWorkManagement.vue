@@ -3,13 +3,13 @@
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/home' }">宠物主人</el-breadcrumb-item>
       <el-breadcrumb-item>我的</el-breadcrumb-item>
-      <el-breadcrumb-item>申请管理</el-breadcrumb-item>
+      <el-breadcrumb-item>服务预约</el-breadcrumb-item>
     </el-breadcrumb>
 
     <el-card class="workCard" v-loading="loading">
       <el-row class="header">
         <el-col class="titlecol" :span="5">
-          <p class="title">申请管理</p>
+          <p class="title">服务预约</p>
         </el-col>
       </el-row>
       <!--搜索与添加-->
@@ -28,7 +28,7 @@
             type="success"
             icon="el-icon-plus"
             @click="$router.push('/Recruitment')"
-            >我要申请</el-button
+            >我要预约</el-button
           >
         </el-col>
       </el-row>
@@ -37,16 +37,16 @@
         <el-table :data="Worklist" border>
           <el-table-column type="index" label="#"> </el-table-column>
           <el-table-column prop="work_name" label="喂养师名称"> </el-table-column>
-          <el-table-column prop="address" label="期望工作地址"> </el-table-column>
-          <el-table-column prop="salary" label="期望工作薪水"> </el-table-column>
-          <el-table-column prop="total_time" label="期望工作时长">
+          <el-table-column prop="address" label="期望服务地址"> </el-table-column>
+          <el-table-column prop="salary" label="期望服务薪水"> </el-table-column>
+          <el-table-column prop="total_time" label="期望服务时长">
           </el-table-column>
-          <el-table-column label="工作状态" width="80">
+          <el-table-column label="服务状态" width="80">
             <template slot-scope="scope">
-              <el-tag type="success" v-if="scope.row.status == 0"
-                >申请中</el-tag
+              <el-tag type="danger" v-if="scope.row.status == 0"
+                >预约中</el-tag
               >
-              <el-tag type="danger" v-if="scope.row.status == 1">已同意</el-tag>
+              <el-tag type="success" v-if="scope.row.status == 1">已同意</el-tag>
             </template>
           </el-table-column>
           <el-table-column label="操作" width="200">
@@ -62,7 +62,7 @@
                   deleteVisible = true;
                   work_id = scope.row.work_id;
                 "
-                >删除工作</el-button
+                >删除服务</el-button
               >
             </template>
           </el-table-column>
@@ -86,11 +86,11 @@
                   :offset="2"
                 >
                   <p class="inlineTitle">
-                    <i class="el-icon-paperclip"></i> 工作名称 ：
+                    <i class="el-icon-paperclip"></i> 服务名称 ：
                     <span class="inlineInfo"> {{ scope.row.work_name }} </span>
                   </p>
                   <p class="inlineTitle">
-                    <i class="el-icon-tickets "></i> 工作描述 ：
+                    <i class="el-icon-tickets "></i> 服务描述 ：
                     <span class="inlineInfo">
                       {{ scope.row.work_description }}
                     </span>
@@ -106,12 +106,12 @@
                     </span>
                   </p>
                   <p class="inlineTitle">
-                    <i class="el-icon-date"></i> 工作周期 ：
+                    <i class="el-icon-date"></i> 服务周期 ：
                     <span class="inlineInfo"> {{ scope.row.start_day }} </span>
                     ~ <span class="inlineInfo"> {{ scope.row.end_day }} </span>
                   </p>
                   <p class="inlineTitle">
-                    <i class="el-icon-time"></i> 工作时间 ：
+                    <i class="el-icon-time"></i> 服务时间 ：
                     <span class="inlineInfo" >{{week_list[scope.row.week_day]}}</span>
                     <span class="inlineInfo"> {{ scope.row.start_time }} </span>
                     ~ <span class="inlineInfo"> {{ scope.row.end_time }} </span>
@@ -140,10 +140,10 @@
 
     
 
-    <!--删除工作对话框-->
+    <!--删除服务对话框-->
     <el-dialog title="提示" :visible.sync="deleteVisible" width="30%" center>
       <div style="text-align:center">
-        <span>删除申请后该申请将不会出现在你的申请列表里，您确定吗?</span>
+        <span>删除预约后该预约将不会出现在你的预约列表里，您确定吗?</span>
       </div>
       <span slot="footer" class="dialog-footer">
         <el-button @click="deleteVisible = false">取 消</el-button>
@@ -202,7 +202,7 @@ export default {
       workDay: "",
 
       pickerOptions0: {
-        //设置日期必须在工作时间之间
+        //设置日期必须在服务时间之间
         disabledDate: (time) => {
           if (this.workstart)
             return (
@@ -242,7 +242,7 @@ export default {
     addAbsentPre() {
       this.$refs.AbFormRef.validate(async (valid) => {
         if (!valid) {
-          this.$message.error("请按照验证提示正确填写请假申请后再进行提交");
+          this.$message.error("请按照验证提示正确填写请假预约后再进行提交");
           return;
         }
         if (this.AbForm.proof == "") {
@@ -254,14 +254,14 @@ export default {
           { withCredentials: true }
         );
         if (res == -1) {
-          this.$message.error("请假申请提交失败，请稍后重试");
+          this.$message.error("请假预约提交失败，请稍后重试");
           return;
         }
         if (res == -21 || res == -22) {
-          this.$message.error("抱歉，您不能在同一天重复申请请假");
+          this.$message.error("抱歉，您不能在同一天重复预约请假");
           return;
         }
-        this.$message.success("请假申请提交成功,您可以在请假管理中进行查看");
+        this.$message.success("请假预约提交成功,您可以在请假管理中进行查看");
         this.AbsentVisible = false;
       });
     },
@@ -274,10 +274,10 @@ export default {
       this.getWorklist();
       if (res == 1) {
         this.$message.success(
-          "您辞职的消息已经发给工作发布者，感谢您参与工作！"
+          "您辞职的消息已经发给服务发布者，感谢您参与服务！"
         );
       } else {
-        this.$message.error("辞职申请发送失败，请稍后重试");
+        this.$message.error("辞职预约发送失败，请稍后重试");
       }
     },
     async handleDelete() {
@@ -288,7 +288,7 @@ export default {
       );
       this.getWorklist();
       if (res == 1) {
-        this.$message.success("该申请已经成功地从申请管理中移除");
+        this.$message.success("该预约已经成功地从服务预约中移除");
       } else {
         this.$message.error("删除操作执行失败，请稍后重试");
       }

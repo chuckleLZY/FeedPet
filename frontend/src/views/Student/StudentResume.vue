@@ -94,7 +94,7 @@
           </div>
         </div>
       </div>
-      <p class="syaSup">SYA——Show Your Ability</p>
+      <p class="syaSup">FeedPet——Feed Our Pets</p>
     </el-card>
     <!--简历编辑卡片-->
     <el-card class="editCard" v-if="editResume == true && resumeExsit == true">
@@ -216,7 +216,7 @@
           ></el-input>
         </el-form-item>
       </el-form>
-      <p class="syaSup">SYA——Show Your Ability</p>
+      <p class="syaSup">FeedPet——Feed Our Pets</p>
     </el-card>
 
     <!--简历创建卡片-->
@@ -337,7 +337,7 @@
           ></el-input>
         </el-form-item>
       </el-form>
-      <p class="syaSup">SYA——Show Your Ability</p>
+      <p class="syaSup">FeedPet——Feed Our Pets</p>
     </el-card>
 
     <!--关闭对话框-->

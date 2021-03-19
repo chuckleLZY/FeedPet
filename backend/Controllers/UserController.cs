@@ -101,5 +101,48 @@ namespace SyaApi.Controllers
             //未找到user
             return BadRequest(new {message = "cannot find the user"}); 
         }
+
+        [HttpPost("GetApplyUserInfo")]
+        public async Task<ActionResult<UserInfoResponse>> GetApplyUserInfo([FromBody] ApplyUserRequest request)
+        {
+            
+            var apply = await ApplyAccessor.Read(request.user_id);
+
+            //查找当前id是否存在user
+            var temp = await UserAccessor.Read(apply.student_id);
+
+            if(temp != null)
+            {    
+                var user_res = _mapper.Map<UserInfoResponse>(temp);
+                if (temp.user_role == Constants.Role.Student)
+                {
+                    //is student
+                    user_res.nof_apply = await ApplyAccessor.GetNumOfApp(request.user_id); //count(apply.apply_id)
+                    user_res.income = await SalaryAccessor.GetSumOfSalary(request.user_id); //sum(salary.num)
+                    var waa = await TakesAccessor.GetSumOfWorkAndAbsent(request.user_id);
+                    user_res.nof_absent = waa.sum_absent_num; //sum(takes.absent_num)
+                    user_res.work_time = waa.sum_work_time; //sum(takes.work_time)
+                    user_res.absent_time = waa.sum_absent_time; //sume(takes.absent_time)
+                }
+                else
+                {
+                    //not student
+                    user_res.nof_apply = 0;
+                    user_res.nof_absent = 0;
+                    user_res.work_time = 0;
+                    user_res.income = 0;
+                    user_res.absent_time = 0;
+                }
+           
+                return Ok(user_res);
+            }
+
+            //未找到user
+            return BadRequest(new {message = "cannot find the user"}); 
+        }
+
+
+
+
     }
 }

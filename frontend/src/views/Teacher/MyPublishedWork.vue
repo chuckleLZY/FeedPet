@@ -2,7 +2,7 @@
   <div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/home' }">教师</el-breadcrumb-item>
-      <el-breadcrumb-item>工作台</el-breadcrumb-item>
+      <el-breadcrumb-item>服务台</el-breadcrumb-item>
       <el-breadcrumb-item>发布记录</el-breadcrumb-item>
     </el-breadcrumb>
     <el-card style="margin-top:20px;width: 98%" v-loading="loading">
@@ -15,16 +15,16 @@
               class="demo-table-expand"
               style="margin-left:240px;"
             >
-              <el-form-item label="工作名称">
+              <el-form-item label="服务名称">
                 <span>{{ props.row.work_name }}</span>
               </el-form-item>
-              <el-form-item label="工作地点">
+              <el-form-item label="服务地点">
                 <span>{{ props.row.address }}</span>
               </el-form-item>
               <el-form-item label="工薪薪资">
                 <span>{{ props.row.salary }}</span>
               </el-form-item>
-              <el-form-item label="工作日">
+              <el-form-item label="服务日">
                 <span>{{ props.row.week_day }}</span>
               </el-form-item>
               <el-form-item label="开始日期">
@@ -39,14 +39,14 @@
               <el-form-item label="结束时间">
                 <span>{{ props.row.end_time }}</span>
               </el-form-item>
-              <el-form-item label="工作描述">
+              <el-form-item label="服务描述">
                 <span>{{ props.row.work_description }}</span>
               </el-form-item>
             </el-form>
           </template>
         </el-table-column>
         <el-table-column label="#" type="index"></el-table-column>
-        <el-table-column label="工作名称" prop="work_name"></el-table-column>
+        <el-table-column label="服务名称" prop="work_name"></el-table-column>
         <el-table-column prop="likes_num" label="点赞"></el-table-column>
         <el-table-column prop="collect_num" label="收藏"></el-table-column>
         <!-- <el-table-column prop="share_num" label="分享" width="160"></el-table-column> -->
@@ -92,19 +92,19 @@
         label-position="left"
         ref="thisform"
       >
-        <el-form-item label="工作名称" prop="name">
+        <el-form-item label="服务名称" prop="name">
           <el-input
             v-model="editdata.work_name"
             maxlength="15"
             show-word-limit
           ></el-input>
         </el-form-item>
-        <el-form-item label="工作图像" required> </el-form-item>
+        <el-form-item label="服务图像" required> </el-form-item>
         <!-- 上传 -->
         <el-tooltip
           class="item"
           effect="dark"
-          content="点击上传需要替换的工作封面"
+          content="点击上传需要替换的服务封面"
           placement="top"
         >
           <el-upload
@@ -118,13 +118,13 @@
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
         </el-tooltip>
-        <el-form-item label="工作地点" prop="new_address">
+        <el-form-item label="服务地点" prop="new_address">
           <el-input width="300px" v-model="editdata.address"></el-input>
         </el-form-item>
-        <el-form-item label="工作薪资" prop="salary">
+        <el-form-item label="服务薪资" prop="salary">
           <el-input v-model="editdata.salary"></el-input>
         </el-form-item>
-        <el-form-item label="工作日期" required>
+        <el-form-item label="服务日期" required>
           <el-col :span="9">
             <el-form-item prop="start_day">
               <el-date-picker
@@ -153,7 +153,7 @@
             </el-form-item>
           </el-col>
         </el-form-item>
-        <el-form-item label="工作时间" required>
+        <el-form-item label="服务时间" required>
           <el-col :span="9">
             <el-form-item prop="start_time">
               <el-time-select
@@ -185,8 +185,8 @@
             </el-form-item>
           </el-col>
         </el-form-item>
-        <el-form-item label="工作日" prop="week_day">
-          <el-select v-model="editdata.week_day" placeholder="请选择工作日">
+        <el-form-item label="服务日" prop="week_day">
+          <el-select v-model="editdata.week_day" placeholder="请选择服务日">
             <el-option label="星期一" value="1"></el-option>
             <el-option label="星期二" value="2"></el-option>
             <el-option label="星期三" value="3"></el-option>
@@ -196,10 +196,10 @@
             <el-option label="星期日" value="7"></el-option>
           </el-select>
         </el-form-item>
-        <!-- <el-form-item label="工作薪资（元/天）" prop="new_salary">
+        <!-- <el-form-item label="服务薪资（元/天）" prop="new_salary">
           <el-input v-model="editdata.new_salary"></el-input>
         </el-form-item>-->
-        <el-form-item label="工作描述" prop="work_description">
+        <el-form-item label="服务描述" prop="work_description">
           <el-input
             type="textarea"
             v-model="editdata.work_description"
@@ -266,7 +266,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "请选择工作开始日期",
+            message: "请选择服务开始日期",
             trigger: "change",
           },
         ],
@@ -274,7 +274,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "请选择工作结束日期",
+            message: "请选择服务结束日期",
             trigger: "change",
           },
         ],
@@ -282,7 +282,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "请选择工作开始时间",
+            message: "请选择服务开始时间",
             trigger: "change",
           },
         ],
@@ -290,21 +290,21 @@ export default {
           {
             type: "string",
             required: true,
-            message: "请选择工作结束时间",
+            message: "请选择服务结束时间",
             trigger: "change",
           },
         ],
         week_day: [
-          { required: true, message: "请选择工作日", trigger: "change" },
+          { required: true, message: "请选择服务日", trigger: "change" },
         ],
         address: [
-          { required: true, message: "请填写工作地址", trigger: "change" },
+          { required: true, message: "请填写服务地址", trigger: "change" },
         ],
         salary: [
-          { required: true, message: "请填写工作薪资", trigger: "change" },
+          { required: true, message: "请填写服务薪资", trigger: "change" },
         ],
         work_description: [
-          { required: true, message: "请填写工作描述", trigger: "blur" },
+          { required: true, message: "请填写服务描述", trigger: "blur" },
         ],
       },
       //设置选择日期
@@ -354,7 +354,7 @@ export default {
       this.loading = false;
     },
 
-    //获取一页的申请信息
+    //获取一页的预约信息
     async getOnePageworklist() {
       this.Dialogvisible = false;
       this.loading = true;
@@ -408,11 +408,11 @@ export default {
       }
       this.DialogVisible = true;
     },
-    //删除工作
+    //删除服务
     async deleteWork(id) {
       //console.log(id);
       const confirmResulte = await this.$confirm(
-        "此操作将永久删除该工作, 是否继续?",
+        "此操作将永久删除该服务, 是否继续?",
         "提示",
         {
           confirmButtonText: "确定",
@@ -450,7 +450,7 @@ export default {
       this.getWorkList();
     },
 
-    // 编辑工作
+    // 编辑服务
     async Editework() {
       if (this.editdata.week_day == "星期一") {
         this.editdata.week_day = 1;
@@ -477,7 +477,7 @@ export default {
       console.log(this.editdata);
       this.$refs.thisform.validate(async (valid) => {
         if (!valid) {
-          this.$message.error("请按照提示正确填写工作内容");
+          this.$message.error("请按照提示正确填写服务内容");
           return;
         }
         // console.log(this.form);

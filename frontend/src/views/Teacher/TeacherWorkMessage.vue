@@ -15,9 +15,9 @@
                 <el-col :span="7">
                     <el-input placeholder="请输入内容" v-model="input3" class="input-with-select">
                         <el-select v-model="select" slot="prepend" placeholder="搜索类型">
-                        <el-option label="工作类型" value="1"></el-option>
-                        <el-option label="工作时间" value="2"></el-option>
-                        <el-option label="工作地点" value="3"></el-option>
+                        <el-option label="服务类型" value="1"></el-option>
+                        <el-option label="服务时间" value="2"></el-option>
+                        <el-option label="服务地点" value="3"></el-option>
                         </el-select>
                         <el-button slot="append" icon="el-icon-search"></el-button>
                     </el-input>
@@ -41,7 +41,7 @@
         <el-table-column label="#" type="index"></el-table-column>
         <el-table-column label="请假人" prop="student_name"></el-table-column>
 
-        <el-table-column label="工作名称" prop="work_name"></el-table-column>
+        <el-table-column label="服务名称" prop="work_name"></el-table-column>
 
         <el-table-column label="请假日期" prop="leave_day"></el-table-column>
         <el-table-column label="开始时间" prop="leave_start"></el-table-column>
@@ -95,7 +95,7 @@
           <el-form-item label="请假人">
             <el-input readonly v-model="messageData.student_name"></el-input>
           </el-form-item>
-          <el-form-item label="请假工作">
+          <el-form-item label="请假服务">
             <el-input readonly v-model="messageData.work_name"></el-input>
           </el-form-item>
           <el-form-item label="证明">
@@ -142,7 +142,7 @@ export default {
       checkDialogVisible: false,
       messageData: {},
       loading: true,
-      //获取工作列表的参数对象
+      //获取服务列表的参数对象
       queryInfo: {
         pagenum: 1,
         pagesize: 10,
@@ -153,7 +153,7 @@ export default {
     };
   },
   created() {
-    //调用获取发布的工作的API函数
+    //调用获取发布的服务的API函数
     this.getWorkMessageList();
   },
   methods: {
@@ -173,7 +173,7 @@ export default {
       this.getWorkMessageList();
       // this.loading = false;
     },
-    //获取工作列表的函数
+    //获取服务列表的函数
     //   async getWorkList(){
     //      const {data:res}= await this.$http.get('URL',{params:this.queryInfo})
     //   }

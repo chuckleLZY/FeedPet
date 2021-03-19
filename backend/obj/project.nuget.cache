@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ti0KvTE+bgcnamyLQ6isD3IrPMh0kTIBE/MxgrC3rEafLUYiS5RRV4LZOAq9qQoKpFOqvWUin2fmo9e0KgDzDg==",
+  "dgSpecHash": "4cq5JTwd2BBQmLgW0r7CH1jP77324av3Ru1GBTTRYx9veWcU1lc1PZnXNmtQ4Esw52tY2MKMZhoie+UG9UhIRw==",
   "success": true,
-  "projectFilePath": "/Users/admin/Desktop/CDD/backend/SyaApi.csproj",
+  "projectFilePath": "/Users/admin/Desktop/feedpet/CDD/backend/SyaApi.csproj",
   "expectedPackageFiles": [
     "/Users/admin/.nuget/packages/automapper/10.0.0/automapper.10.0.0.nupkg.sha512",
     "/Users/admin/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/8.0.1/automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512",

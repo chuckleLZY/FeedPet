@@ -6,7 +6,7 @@
         <div
           style="position:absolute;z-indent:9;display: inline-block;width:500px;margin-left:-362px;padding-top:8px"
         >
-          <div style="font-weight:bolder"> SYA——Show Your Ability</div>
+          <div style="font-weight:bolder"> FeedPet——Feed our Pets</div>
           <br />联系我们： 
           <i class="el-icon-s-custom"></i>同济大学软件学院  
           <i class="el-icon-location"></i>上海市嘉定区曹安公路4800号

@@ -34,6 +34,14 @@ namespace SyaApi.Controllers
             };
         }
 
+        [HttpPost("hello")]
+        [AllowAnonymous]
+        public async Task<string> Hello([FromBody] LoginRequest request){
+            var account = await AccountAccessor.Find(request.Username);
+            return "hello world";
+        }
+
+
         [HttpPost("Login")]
         [AllowAnonymous]
         public async Task<ActionResult<AccountResponse>> PostLogin([FromBody] LoginRequest request)
@@ -81,6 +89,12 @@ namespace SyaApi.Controllers
             account.Password = BCrypt.Net.BCrypt.HashPassword(Sha512Hmac.HashPassword(request.Password), 10);
             account.Id = await AccountAccessor.Create(account);
             await UserAccessor.Create(account); // Create user at the same time
+            if(request.Role== Constants.Role.Student){
+                var resume = new ResumeEntity();
+                resume.student_id=account.Id;
+                await ResumeAccessor.Create(resume);
+            }
+            
             await AnnounceAccessor.SetNewSend(account.Id);//create user's announce
             // issue cookie
             var claims = new Claim[]

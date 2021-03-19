@@ -20,7 +20,7 @@
         </el-menu-item>-->
         <el-menu-item index="/StudentWorkManagement">
           <i class="el-icon-menu"></i>
-          <span slot="title">申请管理</span>
+          <span slot="title">服务预约</span>
         </el-menu-item>
         <!--<el-menu-item index="/StudentLeaveManagement">
           <i class="el-icon-folder-remove"></i>

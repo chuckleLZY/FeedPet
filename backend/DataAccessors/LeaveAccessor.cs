@@ -18,7 +18,7 @@ namespace SyaApi.DataAccessors
         ///</summery>
         public static async Task<LeaveEntity> Read(int leave_id)
         {
-            var query = @"SELECT leave_id,student_id,work_id,
+            var query = @"SELECT leave_id,user_id,work_id,
             content,proof,status,leave_duration,
             request_time,leave_day,leave_start,leave_end
             FROM leave_information
@@ -36,7 +36,7 @@ namespace SyaApi.DataAccessors
                 return new LeaveEntity()
                 {
                     leave_id=reader.GetInt32("leave_id"),
-                    student_id=reader.GetInt32("student_id"),
+                    student_id=reader.GetInt32("user_id"),
                     work_id=reader.GetInt32("work_id"),
                     content=reader.GetString("content"),
                     //leave_time=reader.GetString("leave_time"),
@@ -55,11 +55,11 @@ namespace SyaApi.DataAccessors
 
         public static async Task<LeaveEntity> Find(int id)
         {
-            var query = @"SELECT leave_id,leave_information.student_id,
+            var query = @"SELECT leave_id,leave_information.user_id,
             leave_information.work_id,content,proof,
             user_name,work_name,status,leave_duration,request_time,leave_day,leave_start,leave_end
             FROM (leave_information natural join user) join work using (work_id) 
-            WHERE leave_id=@id and leave_information.student_id=user.user_id;";
+            WHERE leave_id=@id and leave_information.user_id=user.user_id;";
 
             using var connection = DatabaseConnector.Connect();
             await connection.OpenAsync();
@@ -73,7 +73,7 @@ namespace SyaApi.DataAccessors
                 return new LeaveEntity
                 {
                     leave_id=reader.GetInt32("leave_id"),
-                    student_id=reader.GetInt32("student_id"),
+                    student_id=reader.GetInt32("user_id"),
                     work_id=reader.GetInt32("work_id"),
                     content=reader.GetString("content"),
                     //leave_time=reader.GetString("leave_time"),
@@ -102,7 +102,7 @@ namespace SyaApi.DataAccessors
         {
             var query = @"SELECT status,leave_day
             FROM leave_information
-            WHERE student_id=@stu_id AND work_id=@work_id";
+            WHERE user_id=@stu_id AND work_id=@work_id";
 
             using var connection = DatabaseConnector.Connect();
             await connection.OpenAsync();
@@ -133,7 +133,7 @@ namespace SyaApi.DataAccessors
 
         public static async Task<int> Create(LeaveEntity leave)
         {
-            var query = @"INSERT INTO leave_information(student_id,work_id,content,
+            var query = @"INSERT INTO leave_information(user_id,work_id,content,
             proof,status,leave_duration,leave_day,leave_start,leave_end)
              VALUES(@student_id,@work_id,@content,
              @proof,@status,@duration,@day,@start,@end)";
@@ -169,7 +169,7 @@ namespace SyaApi.DataAccessors
             var leave_apps = new LeaveItemEntity();
             leave_apps.total = 0;
             leave_apps.leaveItem = new List<LeaveEntity>();
-            var query = @"SELECT leave_id,student_id,work_id,
+            var query = @"SELECT leave_id,user_id,work_id,
             content,proof,status,leave_duration,
             request_time,leave_day,leave_start,leave_end
             FROM leave_information NATURAL JOIN work
@@ -188,7 +188,7 @@ namespace SyaApi.DataAccessors
                 var temp = new LeaveEntity()
                 {
                     leave_id=reader.GetInt32("leave_id"),
-                    student_id=reader.GetInt32("student_id"),
+                    student_id=reader.GetInt32("user_id"),
                     work_id=reader.GetInt32("work_id"),
                     content=reader.GetString("content"),
                     //leave_time=reader.GetString("leave_time"),
@@ -231,7 +231,7 @@ namespace SyaApi.DataAccessors
             LeaveItemEntity leave=new LeaveItemEntity();
             leave.total=0;
             leave.leaveItem=new List<LeaveEntity>();
-            var query = "SELECT leave_id,student_id,work_id,content,proof,status,request_time,leave_duration FROM leave_information WHERE student_id=@student_id";
+            var query = "SELECT leave_id,user_id,work_id,content,proof,status,request_time,leave_duration FROM leave_information WHERE user_id=@student_id";
 
             using var connection = DatabaseConnector.Connect();
             await connection.OpenAsync();

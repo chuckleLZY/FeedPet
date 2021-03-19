@@ -14,7 +14,7 @@ import TeacherMessage from '../components/TeacherMessage.vue'
 import AdminMessage from '../components/AdminMessage.vue'
 import StudentMine from '../components/StudentMine.vue'
 import TeacherMine from '../components/TeacherMine.vue'
-// import AdminMine from '../components/AdminMine.vue'
+//import AdminMine from '../components/AdminMine.vue'
 
 import Recruitment from '../views/Student/Recruitment.vue'
 import StudentFavorites from '../views/Student/StudentFavorites.vue'
@@ -46,8 +46,8 @@ import AuditWork from '../views/Admin/AuditWork.vue'
 
 import AdminSystemMessage from '../views/Admin/AdminSystemMessage.vue'
 
-// import AdminInformation from '../views/Admin/AdminInformation.vue'
-// import AdminQualification from '../views/Admin/AdminQualification.vue'
+import AdminInformation from '../views/Admin/AdminInformation.vue'
+import AdminQualification from '../views/Admin/AdminQualification.vue'
 
 
 

@@ -16,7 +16,7 @@
         </el-menu-item>
         <el-menu-item index="/AuditWork">
           <i class="el-icon-menu"></i>
-          <span slot="title">审核工作</span>
+          <span slot="title">审核服务</span>
         </el-menu-item>
       </el-menu>
     </el-aside> -->

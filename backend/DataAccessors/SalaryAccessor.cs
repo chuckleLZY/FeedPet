@@ -13,7 +13,7 @@ namespace SyaApi.DataAccessors
         ///</summery>
         public static async Task<decimal> GetSumOfSalary(int stu_id)
         {
-            var query = "SELECT sum(num) AS sum_salary FROM salary WHERE student_id=@id";
+            var query = "SELECT sum(num) AS sum_salary FROM salary WHERE user_id=@id";
 
             using var connection = DatabaseConnector.Connect();
             await connection.OpenAsync();

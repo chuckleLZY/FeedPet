@@ -24,7 +24,7 @@
               label="收藏夹名称"
               prop="favorite_name"
             ></el-table-column>
-            <el-table-column label="工作数量" prop="work_num"></el-table-column>
+            <el-table-column label="喂养师数量" prop="work_num"></el-table-column>
             <el-table-column label="操作" width="300px">
               <template slot-scope="scope_favorite">
                 <el-button
@@ -58,7 +58,7 @@
             <!-- <el-table-column label="操作" width="340px">
                     <template slot-scope="scope">
                           <el-button type="primary" size="mini" icon="el-icon-search">查看详情</el-button>
-                          <el-button type="warning" size="mini" icon="el-icon-s-order" @click="showAbsent">申请请假</el-button>
+                          <el-button type="warning" size="mini" icon="el-icon-s-order" @click="showAbsent">预约请假</el-button>
                           <el-button type="danger" size="mini" icon="el-icon-s-release">我要辞职</el-button>
                     </template>
             </el-table-column>-->
@@ -79,7 +79,7 @@
     </el-container>
 
     <el-drawer
-      title="收藏夹的工作内容!"
+      title="收藏夹的服务内容!"
       :visible.sync="table"
       :before-close="handleClose"
       direction="rtl"
@@ -88,25 +88,25 @@
       <el-table :data="Favorite_work" :model="Favorite_work_table">
         <el-table-column
           property="work_name"
-          label="工作名字"
+          label="服务名字"
           v-model="Favorite_work_table.work_name"
           width="120"
         ></el-table-column>
         <el-table-column
           property="address"
-          label="工作地址"
+          label="服务地址"
           v-model="Favorite_work_table.address"
           width="120"
         ></el-table-column>
         <el-table-column
           property="salary"
-          label="工作薪水"
+          label="服务薪水"
           v-model="Favorite_work_table.salary"
           width="120"
         ></el-table-column>
         <el-table-column
           property="work_time"
-          label="工作时间"
+          label="服务时间"
           v-model="Favorite_work_table.work_time"
           width="120"
         ></el-table-column>
@@ -117,7 +117,7 @@
               icon="el-icon-edit"
               size="mini"
               @click="DeleteWork(scope_work.row.work_id)"
-              >删除工作</el-button
+              >删除服务</el-button
             >
           </template>
         </el-table-column>
@@ -160,7 +160,7 @@
               placeholder="请输入收藏夹名字"
             ></el-input>
           </el-form-item>
-          <!-- 工作数量 -->
+          <!-- 服务数量 -->
         </el-form>
         <div class="demo-drawer__footer">
           <el-button @click="dialogCreateVisible = false">取消</el-button>
@@ -324,7 +324,7 @@ export default {
       this.pagenum = res.data.pagenum;
       this.loading = false;
     },
-    // 删除收藏夹中的工作
+    // 删除收藏夹中的服务
     async DeleteWork(workIdDeleteWork) {
       const result = await axios.post(
         this.$helper.endpointUrl("/Favorite/DeleteFavoriteWork"),

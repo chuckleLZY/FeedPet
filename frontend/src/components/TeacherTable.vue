@@ -12,11 +12,11 @@
       >
         <el-menu-item index="/ReceivedResume">
           <i class="el-icon-message-solid"></i>
-          <span slot="title">查看申请</span>
+          <span slot="title">服务下单</span>
         </el-menu-item>
         <el-menu-item index="/PublishWorkMessage">
           <i class="el-icon-edit-outline"></i>
-          <span slot="title">发布工作</span>
+          <span slot="title">发布服务</span>
         </el-menu-item>
         <el-menu-item index="/MyPublishedWork">
           <i class="el-icon-s-flag"></i>

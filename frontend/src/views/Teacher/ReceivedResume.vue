@@ -2,20 +2,20 @@
   <div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/home' }">教师</el-breadcrumb-item>
-      <el-breadcrumb-item>工作台</el-breadcrumb-item>
-      <el-breadcrumb-item>查看申请</el-breadcrumb-item>
+      <el-breadcrumb-item>服务台</el-breadcrumb-item>
+      <el-breadcrumb-item>服务下单</el-breadcrumb-item>
     </el-breadcrumb>
     <el-card style="margin-top:20px;width:100%">
       <el-table :data="tableData" style="width: 100%" v-loading="loading">
         <el-table-column label="#" type="index" width="180px"></el-table-column>
         <el-table-column
           prop="work_name"
-          label="工作名称"
+          label="服务名称"
           width="250px"
         ></el-table-column>
         <el-table-column
           prop="student_name"
-          label="学生姓名"
+          label="宠物主人姓名"
           width="250px"
         ></el-table-column>
         <el-table-column prop="edit" label="状态" width="250px">
@@ -50,21 +50,31 @@
     <el-dialog title="详情" :visible.sync="checkDialogVisible" width="35%">
       <div style="width:400px;margin:auto;">
         <el-form status-icon label-width="auto" :model="reSumeData">
+
           <div style="width:300px;margin:auto;">
             <el-form-item label="姓名">
-              <el-input readonly v-model="reSumeData.student_name"></el-input>
+              <el-input readonly v-model="reSumeData.user_name"></el-input>
             </el-form-item>
           </div>
           <div style="width:300px;margin:auto;">
-            <el-form-item label="年龄">
-              <el-input readonly v-model="reSumeData.age"></el-input>
+            <el-form-item label="性别">
+              <el-input readonly v-model="reSumeData.gender"></el-input>
             </el-form-item>
           </div>
           <div style="width:300px;margin:auto;">
-            <el-form-item label="城市">
-              <el-input readonly v-model="reSumeData.city"></el-input>
+            <el-form-item label="电话号码">
+              <el-input readonly v-model="reSumeData.tel"></el-input>
             </el-form-item>
           </div>
+          <div style="width:300px;margin:auto;">
+            <el-form-item label="银行卡号">
+              <el-input readonly v-model="reSumeData.bank"></el-input>
+            </el-form-item>
+          </div>
+
+
+
+<!-- 
           <div>
             <el-form-item label="学习经历">
               <el-input type="textarea" :rows='4' readonly v-model="reSumeData.education"></el-input>
@@ -109,7 +119,7 @@
               readonly
               v-model="reSumeData.introduction"
             ></el-input>
-          </el-form-item>
+          </el-form-item> -->
         </el-form>
         <span slot="footer" class="dialog-footer">
           <el-tag type="success" v-if="reSumeData.status == 1">已接受</el-tag>
@@ -144,7 +154,7 @@ export default {
     };
   },
   methods: {
-    //接收申请
+    //接收预约
     async accept() {
       this.checkDialogVisible = false;
       //console.log("resumeData",this.reSumeData)
@@ -167,12 +177,12 @@ export default {
         {
           message_type: 0,
           content:
-            "Congratulations!" +
+            "Congratulations!  " +
             this.reSumeData.teacher_name +
             " 接受了 " +
             this.reSumeData.work_name +
-            " 的工作申请",
-          receiver_id: this.reSumeData.student_id,
+            " 的服务预约",
+          receiver_id: this.reSumeData.user_id,
         },
         {
           withCredentials: true,
@@ -183,9 +193,9 @@ export default {
       //刷新
       this.$message.success("接受成功");
       this.loading = true;
-      await this.getReceivedResume();
+      await this.getReceivedUserInfo();
     },
-    //拒绝申请
+    //拒绝预约
     async refuse() {
       this.checkDialogVisible = false;
       this.checkDialogVisible = false;
@@ -211,8 +221,8 @@ export default {
             this.reSumeData.teacher_name +
             " 拒绝了 " +
             this.reSumeData.work_name +
-            " 的工作申请",
-          receiver_id: this.reSumeData.student_id,
+            " 的服务预约",
+          receiver_id: this.reSumeData.user_id,
         },
         {
           withCredentials: true,
@@ -222,20 +232,36 @@ export default {
       //刷新
       this.$message.success("拒绝成功");
       this.loading = true;
-      await this.getReceivedResume();
+      await this.getReceivedUserInfo();
     },
     //查看简历详情
     getMoreInfo(row) {
-      // console.log("row",row);
+       console.log("row",row);
       this.reSumeData = row;
       this.checkDialogVisible = true;
     },
-    //获得简历信息
-    async getResume(resumeId) {
+
+
+
+    // //获得简历信息
+    // async getResume(resumeId) {
+    //   const result = await axios.post(
+    //     this.$helper.endpointUrl("/Resume/GetResumeInfo"),
+    //     {
+    //       resume_id: resumeId,
+    //     },
+    //     {
+    //       withCredentials: true,
+    //     }
+    //   );
+    //   return result;
+    // },
+    //获得个人信息
+    async getUserInfo(applyId) {
       const result = await axios.post(
-        this.$helper.endpointUrl("/Resume/GetResumeInfo"),
+        this.$helper.endpointUrl("/User/GetApplyUserInfo"),
         {
-          resume_id: resumeId,
+          user_id:applyId,
         },
         {
           withCredentials: true,
@@ -243,8 +269,42 @@ export default {
       );
       return result;
     },
-    //获得所有申请信息
-    async getReceivedResume() {
+
+
+    // //获得所有预约信息
+    // async getReceivedResume() {
+    //   const result = await axios.post(
+    //     this.$helper.endpointUrl("/Apply/ProViewApps"),
+    //     this.pageInfo,
+    //     {
+    //       withCredentials: true,
+    //     }
+    //   );
+    //   this.total = result.data.totalpage;
+    //   // console.log(result);
+    //   this.tableData = result.data.applist;
+    //   for (var i = 0; i < this.tableData.length; i++) {
+    //     // console.log(this.tableData[i].resume_id);
+    //     const resume = await this.getResume(this.tableData[i].resume_id);
+    //     this.tableData[i]["student_name"] = resume.data.student_name;
+    //     this.tableData[i]["age"] = resume.data.age;
+    //     this.tableData[i]["city"] = resume.data.city;
+    //     this.tableData[i]["education"] = resume.data.education;
+    //     this.tableData[i]["community"] = resume.data.community;
+    //     this.tableData[i]["project"] = resume.data.project;
+    //     this.tableData[i]["academic"] = resume.data.academic;
+    //     this.tableData[i]["skill"] = resume.data.skill;
+    //     this.tableData[i]["introduction"] = resume.data.introduction;
+    //     this.tableData[i]["student_id"] = resume.data.student_id;
+    //     // console.log(this.tableData[i]);
+    //   }
+    //   // console.log("table",this.tableData);
+
+    //   //取消加载的转圈圈
+    //   this.loading = false;
+    // },
+
+    async getReceivedUserInfo(){
       const result = await axios.post(
         this.$helper.endpointUrl("/Apply/ProViewApps"),
         this.pageInfo,
@@ -253,21 +313,25 @@ export default {
         }
       );
       this.total = result.data.totalpage;
-      // console.log(result);
+       //console.log(result);
       this.tableData = result.data.applist;
       for (var i = 0; i < this.tableData.length; i++) {
-        // console.log(this.tableData[i].resume_id);
-        const resume = await this.getResume(this.tableData[i].resume_id);
-        this.tableData[i]["student_name"] = resume.data.student_name;
-        this.tableData[i]["age"] = resume.data.age;
-        this.tableData[i]["city"] = resume.data.city;
-        this.tableData[i]["education"] = resume.data.education;
-        this.tableData[i]["community"] = resume.data.community;
-        this.tableData[i]["project"] = resume.data.project;
-        this.tableData[i]["academic"] = resume.data.academic;
-        this.tableData[i]["skill"] = resume.data.skill;
-        this.tableData[i]["introduction"] = resume.data.introduction;
-        this.tableData[i]["student_id"] = resume.data.student_id;
+         //console.log(this.tableData[i].apply_id);
+        const UserInfo = await this.getUserInfo(this.tableData[i].apply_id);
+        this.tableData[i]["user_name"] = UserInfo.data.user_name;
+        if(UserInfo.data.gender==0){
+          this.tableData[i]["gender"] ="女";
+        }else{this.tableData[i]["gender"] ="男";}
+
+        this.tableData[i]["tel"] = UserInfo.data.tel;
+        this.tableData[i]["bank"] = UserInfo.data.bank;
+        this.tableData[i]["user_id"] = UserInfo.data.user_id;
+        // this.tableData[i]["community"] = resume.data.community;
+        // this.tableData[i]["project"] = resume.data.project;
+        // this.tableData[i]["academic"] = resume.data.academic;
+        // this.tableData[i]["skill"] = resume.data.skill;
+        // this.tableData[i]["introduction"] = resume.data.introduction;
+        // this.tableData[i]["student_id"] = resume.data.student_id;
         // console.log(this.tableData[i]);
       }
       // console.log("table",this.tableData);
@@ -275,7 +339,8 @@ export default {
       //取消加载的转圈圈
       this.loading = false;
     },
-    //获取一页的申请信息
+
+    //获取一页的预约信息
     async getOnePageReceivedResume() {
       const result = await axios.post(
         this.$helper.endpointUrl("/Apply/ProViewApps"),
@@ -285,24 +350,59 @@ export default {
         }
       );
       //console.log(result);
-      this.tableData = result.data.applist;
+      this.tableData = result.data.applist; 
       for (var i = 0; i < this.tableData.length; i++) {
-        // console.log(this.tableData[i].resume_id);
-        const resume = await this.getResume(this.tableData[i].resume_id);
-        this.tableData[i]["student_name"] = resume.data.student_name;
-        this.tableData[i]["age"] = resume.data.age;
-        this.tableData[i]["city"] = resume.data.city;
-        this.tableData[i]["education"] = resume.data.education;
-        this.tableData[i]["community"] = resume.data.community;
-        this.tableData[i]["project"] = resume.data.project;
-        this.tableData[i]["academic"] = resume.data.academic;
-        this.tableData[i]["skill"] = resume.data.skill;
-        this.tableData[i]["introduction"] = resume.data.introduction;
+         //console.log(this.tableData[i].apply_id);
+        const UserInfo = await this.getUserInfo(this.tableData[i].apply_id);
+        this.tableData[i]["user_name"] = UserInfo.data.user_name;
+        if(UserInfo.data.gender==0){
+          this.tableData[i]["gender"] ="女";
+        }else{this.tableData[i]["gender"] ="男";}
+        this.tableData[i]["tel"] = UserInfo.data.tel;
+        this.tableData[i]["bank"] = UserInfo.data.bank;
+        // this.tableData[i]["community"] = resume.data.community;
+        // this.tableData[i]["project"] = resume.data.project;
+        // this.tableData[i]["academic"] = resume.data.academic;
+        // this.tableData[i]["skill"] = resume.data.skill;
+        // this.tableData[i]["introduction"] = resume.data.introduction;
         // console.log(this.tableData[i]);
       }
       //取消加载的转圈圈
       this.loading = false;
     },
+
+
+    // //获取一页的预约信息
+    // async getOnePageReceivedResume() {
+    //   const result = await axios.post(
+    //     this.$helper.endpointUrl("/Apply/ProViewApps"),
+    //     this.pageInfo,
+    //     {
+    //       withCredentials: true,
+    //     }
+    //   );
+    //   //console.log(result);
+    //   this.tableData = result.data.applist; 
+    //   for (var i = 0; i < this.tableData.length; i++) {
+    //     // console.log(this.tableData[i].resume_id);
+    //     const resume = await this.getResume(this.tableData[i].resume_id);
+    //     this.tableData[i]["student_name"] = resume.data.student_name;
+    //     this.tableData[i]["age"] = resume.data.age;
+    //     this.tableData[i]["city"] = resume.data.city;
+    //     this.tableData[i]["education"] = resume.data.education;
+    //     this.tableData[i]["community"] = resume.data.community;
+    //     this.tableData[i]["project"] = resume.data.project;
+    //     this.tableData[i]["academic"] = resume.data.academic;
+    //     this.tableData[i]["skill"] = resume.data.skill;
+    //     this.tableData[i]["introduction"] = resume.data.introduction;
+    //     // console.log(this.tableData[i]);
+    //   }
+    //   //取消加载的转圈圈
+    //   this.loading = false;
+    // },
+
+
+
     // //每一行的颜色
     // tableRowClassName({ row, rowIndex }) {
     //   // console.log(row);
@@ -330,7 +430,7 @@ export default {
   },
 
   async mounted() {
-    await this.getReceivedResume();
+    await this.getReceivedUserInfo();
     // console.log(this.tableData);
   },
 };

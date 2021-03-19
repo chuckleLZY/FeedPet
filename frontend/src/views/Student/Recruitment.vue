@@ -32,7 +32,7 @@
         <el-col :span="4"></el-col>
       </el-row>
 
-      <!-- 工作卡片-->
+      <!-- 服务卡片-->
       <el-row>
         <div v-for="work in workList" :key="work.work_id">
           <el-col
@@ -51,7 +51,7 @@
               </div>
               <div style="padding: 14px;">
                 <p>
-                  <el-tag type="danger">喂养师</el-tag>
+                  <el-tag type="danger">喂养宠物</el-tag>
                   : {{ work.work_name }}
                 </p>
                 <p>
@@ -97,7 +97,7 @@
 
       <!-- 右侧弹窗 -->
       <el-drawer
-        title="工作详情"
+        title="服务详情"
         :visible.sync="drawer"
         :direction="direction"
         :before-close="handleClose"
@@ -117,14 +117,14 @@
             <br />
             <el-form :model="workInfo" label-width="75px" class="demo-ruleForm">
               <el-form-item
-                label="喂养师名字:"
+                label="喂养宠物:"
                 prop="work_name"
                 class="demo-ruleFormItem"
               >
                 <el-input v-model="workInfo.work_name" readonly></el-input>
               </el-form-item>
               <el-form-item
-                label="工作地点:"
+                label="服务地点:"
                 prop="address"
                 class="demo-ruleFormItem"
               >
@@ -138,7 +138,7 @@
                 <el-input v-model="workInfo.salary" readonly></el-input>
               </el-form-item>
               <el-form-item
-                label="期望工作日期:"
+                label="期望服务日期:"
                 prop="start_day"
                 class="demo-ruleFormItem"
               >
@@ -159,7 +159,7 @@
                 ></el-input>
               </el-form-item>
               <el-form-item
-                label="工作时间:"
+                label="服务时间:"
                 prop="start_time"
                 class="demo-ruleFormItem"
               >
@@ -180,7 +180,7 @@
                 ></el-input>
               </el-form-item>
               <el-form-item
-                label="工作日:"
+                label="服务日:"
                 prop="start_time"
                 class="demo-ruleFormItem"
                 style="width:50%"
@@ -202,7 +202,7 @@
             style="margin-top: 16px;"
             v-if="this.$store.state.role == 1"
             plain
-            >提交申请</el-button
+            >选择他！</el-button
           >
           <el-button
             type="primary"
@@ -245,7 +245,7 @@
         ></el-table-column>
 
         <el-table-column
-          label="收藏夹工作数量"
+          label="收藏夹喂养师数量"
           prop="work_num"
         ></el-table-column>
 
@@ -304,14 +304,14 @@
       <el-card :body-style="{ padding: '10px' }" class="recruitment_card4">
         <el-table :data="favWorkList" v-loading="loading" class="addfav">
           <el-table-column label="#" type="index"></el-table-column>
-          <el-table-column label="工作名称" prop="work_name"></el-table-column>
+          <el-table-column label="服务名称" prop="work_name"></el-table-column>
 
           <el-table-column
-            label="工作描述"
+            label="服务描述"
             prop="work_description"
           ></el-table-column>
 
-          <el-table-column label="工作ID" prop="work_id"></el-table-column>
+          <el-table-column label="服务ID" prop="work_id"></el-table-column>
         </el-table>
       </el-card>
       <div class="demo-drawer__footer" style="margin-top:15px">
@@ -341,7 +341,7 @@ export default {
       direction2: "ltr",
       checkDialogVisible: false,
 
-      //获取工作列表的参数对象
+      //获取服务列表的参数对象
       queryInfo: {
         pagenum: 1,
         pagesize: 6,
@@ -377,7 +377,7 @@ export default {
     };
   },
   async created() {
-    //调用获取发布的工作的API函数
+    //调用获取发布的服务的API函数
     //  this.getWorkInfo()
     await this.getWorkList();
   },
@@ -480,7 +480,7 @@ export default {
       //console.log(res);
       this.drawer = true;
     },
-    //获取工作列表的函数
+    //获取服务列表的函数
     async getWorkList() {
       const res = await axios.post(
         this.$helper.endpointUrl("/Work/ViewAllWork"),
@@ -589,22 +589,22 @@ export default {
         return;
       } else if (res.data == -21) {
         this.$message({
-          message: "您已经获得该工作，请到工作管理中查看",
+          message: "您已经获得该服务，请到服务管理中查看",
           type: "warning",
           duration: 1000,
         });
         return;
       } else if (res.data == -22) {
         this.$message({
-          message: "您已经申请过该工作并正在审核，请耐心等待",
+          message: "您已经预约过该服务并正在审核，请耐心等待",
           type: "warning",
           duration: 1000,
         });
         return;
       }
-      // this.$message.success("申请此工作成功");
+      // this.$message.success("预约此服务成功");
       this.$message({
-        message: "申请此工作成功",
+        message: "预约此服务成功",
         type: "success",
         duration: 1000,
       });
@@ -631,7 +631,7 @@ export default {
       //this.pagenum=res.data.pagenum;
       //console.log(res);
       this.loading = false;
-      //  this.$message.success('申请此工作成功');
+      //  this.$message.success('预约此服务成功');
     },
     async addWorkFav(favoritee_id, flag) {
       const res = await axios.post(
@@ -649,9 +649,9 @@ export default {
         return;
       }
       if (res.data !== 0) {
-        // this.$message.error("该工作已在收藏夹内，无法添加");
+        // this.$message.error("该服务已在收藏夹内，无法添加");
         this.$message({
-          message: "该工作已在收藏夹内，无法添加",
+          message: "该服务已在收藏夹内，无法添加",
           type: "error",
           duration: 1000,
         });

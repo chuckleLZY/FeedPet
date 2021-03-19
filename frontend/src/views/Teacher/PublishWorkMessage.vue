@@ -2,13 +2,13 @@
   <div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/home' }">教师</el-breadcrumb-item>
-      <el-breadcrumb-item>工作台</el-breadcrumb-item>
-      <el-breadcrumb-item>发布工作</el-breadcrumb-item>
+      <el-breadcrumb-item>服务台</el-breadcrumb-item>
+      <el-breadcrumb-item>发布服务</el-breadcrumb-item>
     </el-breadcrumb>
 
     <el-card style="margin-top:20px;width: 100%">
       <el-row class="section">
-        <p class="subTitle">创建工作</p>
+        <p class="subTitle">创建服务</p>
         <hr class="sectionHr" align="center" />
         <el-form
           ref="form"
@@ -17,15 +17,34 @@
           label-width="150px"
           style="width: 550px;margin-left:280px;margin-top:40px"
         >
-          <el-form-item label="工作名称" prop="name">
+          <el-form-item label="服务名称" prop="name">
             <el-input
               v-model="form.name"
               maxlength="20"
               show-word-limit
             ></el-input>
           </el-form-item>
-          <el-form-item label="工作图像" required>
-            <!-- 上传 -->
+          <el-form-item label="服务图像" required>
+            <!-- 上传 
+            <el-tooltip
+              class="item"
+              effect="dark"
+              content="点击上传图片"
+              placement="top"
+            > 
+              <el-upload
+                class="avatar-uploader"
+                action="https://jsonplaceholder.typicode.com/posts/"
+                :show-file-list="false"
+                :on-success="handleAvatarSuccess"
+                :before-upload="beforeAvatarUpload"
+              >
+                <img v-if="uploadImg" :src="uploadImg" class="avatar" />
+                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+              </el-upload>
+            </el-tooltip> -->
+           
+           <!-- 上传 -->
             <el-tooltip
               class="item"
               effect="dark"
@@ -43,15 +62,16 @@
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
               </el-upload>
             </el-tooltip>
-           
+
+
           </el-form-item>
-          <el-form-item label="工作地点" prop="address">
+          <el-form-item label="服务地点" prop="address">
             <el-input v-model="form.address"></el-input>
           </el-form-item>
-          <el-form-item label="工作薪资" prop="salary">
+          <el-form-item label="服务薪资" prop="salary">
             <el-input v-model="form.salary"></el-input>
           </el-form-item>
-          <el-form-item label="工作日期" required>
+          <el-form-item label="服务日期" required>
             <el-col :span="11">
               <el-form-item prop="start_day">
                 <el-date-picker
@@ -80,7 +100,7 @@
               </el-form-item>
             </el-col>
           </el-form-item>
-          <el-form-item label="工作时间" required>
+          <el-form-item label="服务时间" required>
             <el-col :span="11">
               <el-form-item prop="start_time">
                 <el-time-select
@@ -112,8 +132,8 @@
               </el-form-item>
             </el-col>
           </el-form-item>
-          <el-form-item label="工作日" prop="week_day">
-            <el-select v-model="form.week_day" placeholder="请选择工作日">
+          <el-form-item label="服务日" prop="week_day">
+            <el-select v-model="form.week_day" placeholder="请选择服务日">
               <el-option label="星期一" value="1"></el-option>
               <el-option label="星期二" value="2"></el-option>
               <el-option label="星期三" value="3"></el-option>
@@ -124,7 +144,7 @@
             </el-select>
           </el-form-item>
 
-          <el-form-item label="工作描述" prop="desc">
+          <el-form-item label="服务描述" prop="desc">
             <el-input
               type="textarea"
               v-model="form.desc"
@@ -173,7 +193,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "请选择工作开始日期",
+            message: "请选择服务开始日期",
             trigger: "change",
           },
         ],
@@ -181,7 +201,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "请选择工作结束日期",
+            message: "请选择服务结束日期",
             trigger: "change",
           },
         ],
@@ -189,7 +209,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "请选择工作开始时间",
+            message: "请选择服务开始时间",
             trigger: "change",
           },
         ],
@@ -197,20 +217,20 @@ export default {
           {
             type: "string",
             required: true,
-            message: "请选择工作结束时间",
+            message: "请选择服务结束时间",
             trigger: "change",
           },
         ],
         week_day: [
-          { required: true, message: "请选择工作日", trigger: "change" },
+          { required: true, message: "请选择服务日", trigger: "change" },
         ],
         address: [
-          { required: true, message: "请填写工作地址", trigger: "change" },
+          { required: true, message: "请填写服务地址", trigger: "change" },
         ],
         salary: [
-          { required: true, message: "请填写工作薪资", trigger: "change" },
+          { required: true, message: "请填写服务薪资", trigger: "change" },
         ],
-        desc: [{ required: true, message: "请填写工作描述", trigger: "blur" }],
+        desc: [{ required: true, message: "请填写服务描述", trigger: "blur" }],
       },
 
       uploadImg: "",
@@ -267,11 +287,11 @@ export default {
           });
         });
     },
-    //创建工作
+    //创建服务
     async Creatework() {
       this.$refs.form.validate(async (valid) => {
         if (!valid) {
-          this.$message.error("请按照提示正确填写工作内容");
+          this.$message.error("请按照提示正确填写服务内容");
           return;
         }
         //console.log(this.form);
@@ -301,7 +321,14 @@ export default {
         }
       });
     },
-    Upload(file) {
+
+
+
+
+
+
+
+     Upload(file) {
       var fileName = "banner" + `${Date.parse(new Date())}` + ".jpg"; //定义唯一的文件名
       //定义唯一的文件名，打印出来的uid其实就是时间戳
       client()

@@ -123,7 +123,7 @@ export default {
       checkDialogVisible: false,
       messageData: {},
       loading: true,
-      //获取工作列表的参数对象
+      //获取服务列表的参数对象
       queryInfo: {
         query: "",
         pagenum: 1,
@@ -152,7 +152,7 @@ export default {
     };
   },
   created() {
-    //调用获取发布的工作的API函数
+    //调用获取发布的服务的API函数
     this.getSysMessageList();
   },
   methods: {
@@ -172,7 +172,7 @@ export default {
       this.getSysMessageList();
       this.loading = false;
     },
-    //获取工作列表的函数
+    //获取服务列表的函数
     async getSysMessageList() {
       const res = await axios.post(
         this.$helper.endpointUrl("/Announce/GetAnnounce"),

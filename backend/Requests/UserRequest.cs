@@ -13,4 +13,9 @@ namespace SyaApi.Requests
         [Required]
         public string bank { get; set; }
     }
+
+    public class ApplyUserRequest{
+        [Required]
+        public int user_id { get; set; }
+    }
 }
